@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using MvcWebSite.Core.Entities;
 
 namespace MvcWebSite.Data
@@ -11,7 +12,7 @@ namespace MvcWebSite.Data
         public DbSet<User> Users { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; database=MVCWebSite; integrated security=true; TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; database=MvcWebSite; integrated security=true; TrustServerCertificate=True;").ConfigureWarnings(warnings=>warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -21,10 +22,13 @@ namespace MvcWebSite.Data
                     Id = 1,
                     CreateDate = DateTime.Now,
                     Name = "Test",
+                    Surname = "User",
                     Email = "admin.yahoo.co",
                     IsActive = true,
                     IsAdmin = true,
-                    Password = "Pass123"
+                    Password = "Pass123",
+                    UserGuid = Guid.NewGuid(),
+                    UserName = "Test"
                 });
         }
     }

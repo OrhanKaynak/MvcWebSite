@@ -1,3 +1,5 @@
+using MvcWebSite.Data;
+
 namespace MvcWebSite.WebUI
 {
     public class Program
@@ -8,6 +10,10 @@ namespace MvcWebSite.WebUI
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddSession();
+
+            builder.Services.AddDbContext<DatabaseContext>();
 
             var app = builder.Build();
 
@@ -25,6 +31,11 @@ namespace MvcWebSite.WebUI
             app.UseAuthorization();
 
             app.MapStaticAssets();
+            app.MapControllerRoute(
+                name: "areas",
+                pattern: "{area:exists}/{controller=Main}/{action=Index}/{id?}")
+                .WithStaticAssets();
+
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}")

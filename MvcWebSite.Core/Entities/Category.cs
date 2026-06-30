@@ -16,6 +16,6 @@ namespace MvcWebSite.Core.Entities
         public DateTime CreateDate { get; set; } = DateTime.Now;
         [Display(Name = "Durum")]
         public bool IsActive { get; set; }
-        public IList<Product> Products { get; set; }
+        public IList<Product>? Products { get; set; }
     }
 }
