@@ -1,10 +1,10 @@
-@model MvcWebSite.Core.Entities.Category
+@model MvcWebSite.Core.Entities.Product
 
 @{
-    ViewData["Title"] = "Kategori ekle";
+    ViewData["Title"] = "Ürün ekle";
 }
 
-<h1>Kategori ekle</h1>
+<h1>Ürün ekle</h1>
 
 <form asp-action="Create" enctype="multipart/form-data">
     <div class="form-horizontal">
@@ -29,15 +29,39 @@
             <span asp-validation-for="Image" class="text-danger"></span>
         </div>
 
+        <div class="form-group">
+            <label asp-for="Price" class="control-label"></label>
+            <input asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Stock" class="control-label"></label>
+            <input asp-for="Stock" class="form-control" />
+            <span asp-validation-for="Stock" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CategoryId" class="control-label"></label>
+            <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories"></select>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>
+
         <div class="form-group form-check">
             <input asp-for="IsActive" class="form-check-input" />
             <label asp-for="IsActive" class="form-check-label"></label>
             <span asp-validation-for="IsActive" class="text-danger"></span>
         </div>
 
+        <div class="form-group form-check">
+            <input asp-for="IsHome" class="form-check-input" />
+            <label asp-for="IsHome" class="form-check-label"></label>
+            <span asp-validation-for="IsHome" class="text-danger"></span>
+        </div>
+
         <div class="form-group">
-            <input type="submit" value="Create" class="btn btn-primary" />
-            <a asp-action="Index" class="btn btn-secondary">Listeye dön</a>
+            <input type="submit" value="Ekle" class="btn btn-primary" />
+            <a asp-area="Admin" asp-controller="Products" asp-action="Index" class="btn btn-secondary">Listeye dön</a>
         </div>
     </div>
 </form>

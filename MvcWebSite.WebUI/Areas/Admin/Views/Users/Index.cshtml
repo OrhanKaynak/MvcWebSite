@@ -1,10 +1,10 @@
-@model IEnumerable<MvcWebSite.Core.Entities.Category>
+@model IEnumerable<MvcWebSite.Core.Entities.User>
 
 @{
-    ViewData["Title"] = "Kategoriler";
+    ViewData["Title"] = "Kullanıcılar";
 }
 
-<h1>Kategoriler</h1>
+<h1>Kullanıcılar</h1>
 
 <p>
     <a asp-action="Create" class="btn btn-primary">Yeni Ekle</a>
@@ -14,11 +14,13 @@
     <thead>
         <tr>
             <th>Id</th>
+            <th>Kullanıcı Adı</th>
+            <th>Email</th>
             <th>Ad</th>
-            <th>Açıklama</th>
-            <th>Resim</th>
+            <th>Soyad</th>
             <th>Kayıt Tarihi</th>
             <th>Durum</th>
+            <th>Admin</th>
             <th></th>
         </tr>
     </thead>
@@ -29,16 +31,13 @@
         {
             <tr>
                 <td>@item.Id</td>
+                <td>@item.UserName</td>
+                <td>@item.Email</td>
                 <td>@item.Name</td>
-                <td>@item.Description</td>
-                <td>
-                    @if (!string.IsNullOrEmpty(item.Image))
-                    {
-                        <img src="@item.Image" alt="@item.Name" style="max-height:50px;" />
-                    }
-                </td>
+                <td>@item.Surname</td>
                 <td>@item.CreateDate.ToString("g")</td>
                 <td>@(item.IsActive ? "Aktif" : "Pasif")</td>
+                <td>@(item.IsAdmin ? "Evet" : "Hayır")</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Düzenle</a> ||
                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Sil</a>

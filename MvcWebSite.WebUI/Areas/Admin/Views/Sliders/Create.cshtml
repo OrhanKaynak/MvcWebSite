@@ -1,10 +1,10 @@
-@model MvcWebSite.Core.Entities.Category
+@model MvcWebSite.Core.Entities.Slider
 
 @{
-    ViewData["Title"] = "Kategori ekle";
+    ViewData["Title"] = "Slider ekle";
 }
 
-<h1>Kategori ekle</h1>
+<h1>Slider ekle</h1>
 
 <form asp-action="Create" enctype="multipart/form-data">
     <div class="form-horizontal">
@@ -12,9 +12,9 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
         <div class="form-group">
-            <label asp-for="Name" class="control-label"></label>
-            <input asp-for="Name" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger"></span>
+            <label asp-for="Title" class="control-label"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
         </div>
 
         <div class="form-group">
@@ -29,15 +29,9 @@
             <span asp-validation-for="Image" class="text-danger"></span>
         </div>
 
-        <div class="form-group form-check">
-            <input asp-for="IsActive" class="form-check-input" />
-            <label asp-for="IsActive" class="form-check-label"></label>
-            <span asp-validation-for="IsActive" class="text-danger"></span>
-        </div>
-
         <div class="form-group">
-            <input type="submit" value="Create" class="btn btn-primary" />
-            <a asp-action="Index" class="btn btn-secondary">Listeye dön</a>
+            <input type="submit" value="Ekle" class="btn btn-primary" />
+            <a asp-area="Admin" asp-controller="Sliders" asp-action="Index" class="btn btn-secondary">Listeye dön</a>
         </div>
     </div>
 </form>

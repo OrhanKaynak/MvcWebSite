@@ -1,10 +1,10 @@
-@model MvcWebSite.Core.Entities.Category
+@model MvcWebSite.Core.Entities.Slider
 
 @{
-    ViewData["Title"] = "Kategori Düzenle";
+    ViewData["Title"] = "Slider Düzenle";
 }
 
-<h1>Kategori Düzenle</h1>
+<h1>Slider Düzenle</h1>
 
 <form asp-action="Edit" enctype="multipart/form-data">
     <div class="form-horizontal">
@@ -14,9 +14,9 @@
         <input type="hidden" asp-for="Id" />
 
         <div class="form-group">
-            <label asp-for="Name" class="control-label"></label>
-            <input asp-for="Name" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger"></span>
+            <label asp-for="Title" class="control-label"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
         </div>
 
         <div class="form-group">
@@ -27,23 +27,16 @@
 
         <div class="form-group">
             <label asp-for="Image" class="control-label"></label>
-            <input asp-for="Image" class="form-control" type="file"/>
+            <input asp-for="Image" class="form-control" type="file" />
             <span asp-validation-for="Image" class="text-danger"></span>
-        </div>
-
-        <div class="form-group form-check">
-            <input asp-for="IsActive" class="form-check-input" />
-            <label asp-for="IsActive" class="form-check-label"></label>
-            <span asp-validation-for="IsActive" class="text-danger"></span>
         </div>
 
         <div class="form-group">
             <input type="submit" value="Kaydet" class="btn btn-primary" />
-            <a asp-action="Index" class="btn btn-secondary">Listeye dön</a>
+            <a asp-area="Admin" asp-controller="Sliders" asp-action="Index" class="btn btn-secondary">Listeye dön</a>
         </div>
     </div>
 </form>
 
-@section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
